@@ -33,6 +33,7 @@ if(pScore_1 == NULL){
     scoreDB_open();
     printf("id: %d name: %s\n",pScore_1->id, pScore_1->name);
     scoreDB_write(pScore_1);
+    scoreDB_read(pScore_1,1);
     return 0;
 }
 
@@ -44,7 +45,10 @@ void scoreDB_write(ScoreDB* ps){
     fwrite(ps, sizeof(ScoreDB),1,pScoreDB);
 }
 
-ScoreDB* scoreDB_read(int ind){
-    return NULL;
+ScoreDB* scoreDB_read(ScoreDB* ps, int ind){
+    fseek(pScoreDB, sizeof(ScoreDB)*1, SEEK_SET);
+    fread(ps, sizeof(ScoreDB), ind-1, pScoreDB);
+    printf("from file id: %d name: %s\n",ps->id, ps->name);
+    return ps;
 }
 
