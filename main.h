@@ -14,21 +14,22 @@ GSList *listScore = NULL;
 typedef struct s_ScoreDB
 {
     /* data */
-    gint id;
-    gchar *name; 
-    gint value; /* somme des scores gagnant */
-    gint victory_number; /* nombre de victoire */
-    gint value_avg; /* moyenne des points de la victoire */
-    gint party_number; /* nombre de partie */
+    int id;
+    char *name; 
+    int value; /* somme des scores gagnant */
+    int victory_number; /* nombre de victoire */
+    int value_avg; /* moyenne des points de la victoire */
+    int party_number; /* nombre de partie */
 
-} ScoreDB, *ptr_ScoreDB; 
+} ScoreDB;
+ScoreDB *ptr_ScoreDB; 
 
-int scoreDB_open();
+void scoreDB_open();
 void scoreDB_close();
 int scoreDB_add();
 void scoreDB_remove();
-ptr_ScoreDB scoreDB_read(); //en cours
+ScoreDB* scoreDB_read(); //en cours
 void scoreDB_sort();
-void scoreDB_write(); //en cours
+void scoreDB_write(ScoreDB*); //en cours
 
 #endif // _MAIN_H
