@@ -9,7 +9,9 @@
 code
 */
 FILE *pScoreDB ;
-GSList *listScore = NULL; 
+GSList *listScore = NULL, *iterator = NULL; 
+
+#define LIST_DATA(str, field) (((str *)iterator->data)->field)
 
 typedef struct s_ScoreDB
 {
@@ -31,5 +33,5 @@ void scoreDB_remove();
 ScoreDB* scoreDB_read(); //en cours
 void scoreDB_sort();
 void scoreDB_write(ScoreDB*); //en cours
-
+int listScoreSort(gconstpointer, gconstpointer);
 #endif // _MAIN_H
