@@ -11,6 +11,8 @@ code
 FILE *pScoreDB ;
 GSList *listScore = NULL, *iterator = NULL; 
 
+
+
 #define LIST_DATA(str, field) (((str *)iterator->data)->field)
 
 typedef struct s_ScoreDB

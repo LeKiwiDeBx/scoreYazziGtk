@@ -16,23 +16,32 @@
 
 #include "main.h"
 
-///////////////// jeu de test ////////////////////////
+///////////////// jeu de test jeu de vilain ///////////////////////////////////
 ScoreDB *pScore_1, *pScore_2, *pScore_3;
 
-ScoreDB score_1 = {1, "jean", 250, 2, 248, 4},
+ScoreDB score_1 = {1, "jean", 260, 2, 248, 4},
         score_2 = {2, "jacques", 270, 2, 248, 4},
-        score_3 = {3, "françois", 260, 2, 248, 4};
+        score_3 = {3, "françois", 280, 2, 248, 4};
+        
+//////////////////////////  [°> Couak! ////////////////////////////////////////
 
+        
+/**
+ * @brief 
+ * 
+ * @param argc 
+ * @param argv 
+ * @return int 
+ */
 int main(int argc, char const *argv[])
 {
-    /* code */
-     pScore_1 = (ScoreDB *)malloc(sizeof(ScoreDB)*1 );
-     pScore_2 = (ScoreDB *)malloc(sizeof(ScoreDB)*1 );
-     pScore_3 = (ScoreDB *)malloc(sizeof(ScoreDB)*1 );
+    pScore_1 = (ScoreDB *)malloc(sizeof(ScoreDB)*1 );
+    pScore_2 = (ScoreDB *)malloc(sizeof(ScoreDB)*1 );
+    pScore_3 = (ScoreDB *)malloc(sizeof(ScoreDB)*1 );
 
-if(pScore_1 == NULL){
-    exit(EXIT_FAILURE);
-}
+    if(pScore_1 == NULL){
+        exit(EXIT_FAILURE);
+    }
     pScore_1 = &score_1 ;
     pScore_2 = &score_2 ;
     pScore_3 = &score_3 ;
@@ -46,22 +55,47 @@ if(pScore_1 == NULL){
     return 0;
 }
 
+/**
+ * @brief 
+ * 
+ */
 void scoreDB_open(){
   pScoreDB = fopen("scoreDB", "w+");
 }
 
+/**
+ * @brief 
+ * 
+ * @param ps 
+ */
 void scoreDB_write(ScoreDB* ps){
     fwrite(ps, sizeof(ScoreDB),1,pScoreDB);
     listScore = g_slist_append(listScore, ps);
 }
 
-int listScoreSort(gconstpointer sc1, gconstpointer sc2){
-    if(((ScoreDB *)sc1)->value > ((ScoreDB *)sc2)->value) return -1;
-    if(((ScoreDB *)sc1)->value < ((ScoreDB *)sc2)->value) return 1;
+/**
+ * @brief 
+ * 
+ * @param sc1 
+ * @param sc2 
+ * @return int 
+ */
+int listScoreSort(gconstpointer sc1, gconstpointer sc2) {
+  if (((ScoreDB *)sc1)->value > ((ScoreDB *)sc2)->value)
+    return -1;
+  else if (((ScoreDB *)sc1)->value < ((ScoreDB *)sc2)->value)
+    return 1;
+  else
     return 0;
-
 }
 
+/**
+ * @brief 
+ * 
+ * @param ps 
+ * @param ind 
+ * @return ScoreDB* 
+ */
 ScoreDB* scoreDB_read(ScoreDB* ps, int ind){
     fseek(pScoreDB, sizeof(ScoreDB)*1, SEEK_SET);
     fread(ps, sizeof(ScoreDB), ind-1, pScoreDB);
@@ -72,9 +106,8 @@ ScoreDB* scoreDB_read(ScoreDB* ps, int ind){
     listScore = g_slist_sort(listScore, listScoreSort);
     for(iterator = listScore; iterator; iterator = iterator->next){
      printf("from iterator id: %d name: %s\n", ((ScoreDB *)iterator->data)->id, ((ScoreDB *)iterator->data)->name);
-}
+    }
     printf("from list id: %d name: %s\n", ((ScoreDB *)listScore->data)->id, ((ScoreDB *)listScore->data)->name);
-
     return ps;
 }
 
