@@ -97,17 +97,17 @@ int listScoreSort(gconstpointer sc1, gconstpointer sc2) {
  * @return ScoreDB* 
  */
 ScoreDB* scoreDB_read(ScoreDB* ps, int ind){
-    fseek(pScoreDB, sizeof(ScoreDB)*1, SEEK_SET);
-    fread(ps, sizeof(ScoreDB), ind-1, pScoreDB);
-    printf("from file id: %d name: %s\n",ps->id, ps->name);
+    fseek(pScoreDB, 0, SEEK_SET); //sizeof(ScoreDB)*1
+    while(fread(ps, sizeof(ScoreDB), 1, pScoreDB) )
+      printf("from file id: %d name: %s\n",ps->id, ps->name);
     for(iterator = listScore; iterator; iterator = iterator->next){
-         printf("from iterator id: %d name: %s\n" , LIST_DATA(ScoreDB,id) ,  LIST_DATA(ScoreDB,name));
+         //printf("from iterator id: %d name: %s\n" , LIST_DATA(ScoreDB,id) ,  LIST_DATA(ScoreDB,name));
     }
     listScore = g_slist_sort(listScore, listScoreSort);
     for(iterator = listScore; iterator; iterator = iterator->next){
-     printf("from iterator id: %d name: %s\n", ((ScoreDB *)iterator->data)->id, ((ScoreDB *)iterator->data)->name);
+     //printf("from iterator id: %d name: %s\n", ((ScoreDB *)iterator->data)->id, ((ScoreDB *)iterator->data)->name);
     }
-    printf("from list id: %d name: %s\n", ((ScoreDB *)listScore->data)->id, ((ScoreDB *)listScore->data)->name);
+    //printf("from list id: %d name: %s\n", ((ScoreDB *)listScore->data)->id, ((ScoreDB *)listScore->data)->name);
     return ps;
 }
 
