@@ -3,16 +3,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <gtk/gtk.h>
 #include <gmodule.h>
-/*
-code
-*/
-FILE *pScoreDB ;
+
+FILE *pScoreDB = NULL;
 GSList *listScore = NULL, *iterator = NULL; 
-
-
-
+/*
+MACROS
+*/
 #define LIST_DATA(str, field) (((str *)iterator->data)->field)
 
 typedef struct s_ScoreDB
@@ -28,12 +27,12 @@ typedef struct s_ScoreDB
 } ScoreDB;
 ScoreDB *ptr_ScoreDB; 
 
-void scoreDB_open();
-void scoreDB_close();
+void scoreDB_open(); //en cours
+int scoreDB_close(); //en cours
 int scoreDB_add();
 void scoreDB_remove();
 ScoreDB* scoreDB_read(); //en cours
-void scoreDB_sort();
+GSList* scoreDB_sort(); //en cours
 void scoreDB_write(ScoreDB*); //en cours
-int listScoreSort(gconstpointer, gconstpointer);
+int listScoreSort(gconstpointer, gconstpointer); //en cours
 #endif // _MAIN_H
