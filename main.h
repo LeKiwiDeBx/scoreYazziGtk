@@ -8,31 +8,35 @@
 #include <gmodule.h>
 
 FILE *pScoreDB = NULL;
-GSList *listScore = NULL, *iterator = NULL; 
+GSList *listScore = NULL, *iterator = NULL;
 /*
 MACROS
 */
 #define LIST_DATA(str, field) (((str *)iterator->data)->field)
-
+#define LIMIT_LIST 10
 typedef struct s_ScoreDB
 {
     /* data */
     int id;
-    char *name; 
-    int value; /* somme des scores gagnant */
+    char *name;
+    int value;          /* somme des scores gagnant */
     int victory_number; /* nombre de victoire */
-    int value_avg; /* moyenne des points de la victoire */
-    int party_number; /* nombre de partie */
+    int value_avg;      /* moyenne des points de la victoire */
+    int party_number;   /* nombre de partie */
 
 } ScoreDB;
-ScoreDB *ptr_ScoreDB; 
+;
+typedef ScoreDB *ptr_ScoreDB;
+typedef ptr_ScoreDB ptabScore[LIMIT_LIST];
 
 void scoreDB_open(); //en cours
 int scoreDB_close(); //en cours
 int scoreDB_add();
 void scoreDB_remove();
-ScoreDB* scoreDB_read(); //en cours
-GSList* scoreDB_sort(); //en cours
-void scoreDB_write(ScoreDB*); //en cours
+GSList *scoreDB_trim();                          // limitera à LIMIT_LIST la liste score
+ScoreDB *scoreDB_read();                         //en cours
+GSList *scoreDB_sort();                          //en cours
+ptabScore *scoreDB_get(GSList *);                //retourne un pointeur sur tableau qui contient les LIMIT_LIST pointeurs sur les structures score
+void scoreDB_write(ScoreDB *);                   //en cours
 int listScoreSort(gconstpointer, gconstpointer); //en cours
-#endif // _MAIN_H
+#endif                                           // _MAIN_H
