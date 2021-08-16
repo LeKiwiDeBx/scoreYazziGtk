@@ -164,5 +164,22 @@ GSList *scoreDB_sort(ScoreDB *ps)
  */
 ptabScore *scoreDB_get(GSlist *gsl)
 {
+  static ptabScore *p = NULL;
   /* code */
+  return p;
+}
+
+/**
+ * @brief coupe la liste au n ième élement
+ * 
+ * @param gsl 
+ * @param ind 
+ * @return GSList* 
+ */
+GSList* scoreDB_trim(GSlist *gsl, int n){
+  GSlist *l = NULL ;
+  /*
+  code
+  */
+  return l;
 }
