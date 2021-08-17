@@ -29,14 +29,8 @@ typedef struct s_ScoreDB
 typedef ScoreDB *ptr_ScoreDB;
 typedef ptr_ScoreDB ptabScore[LIMIT_LIST];
 
-void scoreDB_open(); //en cours
-int scoreDB_close(); //en cours
-int scoreDB_add();
-void scoreDB_remove();
-GSList *scoreDB_trim(GSList*, int);                          // limitera à LIMIT_LIST la liste score
-ScoreDB *scoreDB_read();                         //en cours
-GSList *scoreDB_sort();                          //en cours
+                      
 ptabScore *scoreDB_get(GSList *);                //retourne un pointeur sur tableau qui contient les LIMIT_LIST pointeurs sur les structures score
-void scoreDB_write(ScoreDB *);                   //en cours
-int listScoreSort(gconstpointer, gconstpointer); //en cours
+void scoreDB_set();
+
 #endif                                           // _MAIN_H

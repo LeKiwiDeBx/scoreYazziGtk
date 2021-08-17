@@ -24,7 +24,15 @@ ScoreDB score_1 = {1, "jean", 200, 2, 248, 4},
         score_3 = {3, "françois", 280, 2, 248, 4};
 
 //////////////////////////  [°> Couak! ////////////////////////////////////////
-
+static void _scoreDB_open(); //en cours
+static int _scoreDB_close(); //en cours
+static int _scoreDB_add();
+static void _scoreDB_remove();
+static GSList * _scoreDB_trim(GSList*, int);              // limitera à LIMIT_LIST la liste score
+static ScoreDB * _scoreDB_read();                         //en cours
+static GSList * _scoreDB_sort();    
+static void _scoreDB_write(ScoreDB *);                   //en cours
+static int _listScoreSort(gconstpointer, gconstpointer); //en cours
 /**
  * @brief function principal pour test 'appeler à disparaître'
  * 
@@ -46,13 +54,14 @@ int main(int argc, char const *argv[])
   pScore_2 = &score_2;
   pScore_3 = &score_3;
   printf("Test structure\n");
-  scoreDB_open("ScoreDB");
+  _scoreDB_open("ScoreDB");
   //printf("id: %d name: %s\n",pScore_1->id, pScore_1->name);
-  scoreDB_write(pScore_1);
-  scoreDB_write(pScore_2);
-  scoreDB_write(pScore_3);
-  scoreDB_read(pScore_1, 1);
-  scoreDB_close(pScoreDB);
+  _scoreDB_write(pScore_1);
+  _scoreDB_write(pScore_2);
+  _scoreDB_write(pScore_3);
+  _scoreDB_read(pScore_1, 1);
+  _scoreDB_close(pScoreDB);
+  
   return 0;
 }
 
@@ -62,7 +71,7 @@ int main(int argc, char const *argv[])
  * @param nameFile 
  */
 
-void scoreDB_open(char *nameFile)
+static void _scoreDB_open(char *nameFile)
 {
   pScoreDB = fopen(nameFile, "w+");
   if (pScoreDB == NULL)
@@ -76,7 +85,7 @@ void scoreDB_open(char *nameFile)
  * 
  * @param nameFile 
  */
-int scoreDB_close(char *nameFile)
+static int _scoreDB_close(char *nameFile)
 {
   int retCode = fclose(pScoreDB);
   if (retCode == EOF)
@@ -92,7 +101,7 @@ int scoreDB_close(char *nameFile)
  * 
  * @param ps 
  */
-void scoreDB_write(ScoreDB *ps)
+static void _scoreDB_write(ScoreDB *ps)
 {
   listScore = g_slist_append(listScore, ps);
   fwrite(ps, sizeof(ScoreDB), 1, pScoreDB);
@@ -105,7 +114,7 @@ void scoreDB_write(ScoreDB *ps)
  * @param sc2 
  * @return int 
  */
-int listScoreSort(gconstpointer sc1, gconstpointer sc2)
+static int _listScoreSort(gconstpointer sc1, gconstpointer sc2)
 {
   if (((ScoreDB *)sc1)->value > ((ScoreDB *)sc2)->value)
     return -1;
@@ -122,7 +131,7 @@ int listScoreSort(gconstpointer sc1, gconstpointer sc2)
  * @param ind
  * @return ScoreDB*
  */
-ScoreDB *scoreDB_read(ScoreDB *ps, int ind)
+static ScoreDB * _scoreDB_read(ScoreDB *ps, int ind)
 {
 
   ScoreDB *scoreTemp = (ScoreDB *)malloc(sizeof(ScoreDB) * 1);
@@ -145,9 +154,9 @@ ScoreDB *scoreDB_read(ScoreDB *ps, int ind)
  * @param ps 
  * @return GSList* 
  */
-GSList *scoreDB_sort(ScoreDB *ps)
+static GSList * _scoreDB_sort(ScoreDB *ps)
 {
-  listScore = g_slist_sort(listScore, listScoreSort);
+  listScore = g_slist_sort(listScore, _listScoreSort);
   printf("\nNombre element de la liste %d\n", g_slist_length(listScore));
   for (iterator = listScore; iterator; iterator = iterator->next)
   {
@@ -162,7 +171,7 @@ GSList *scoreDB_sort(ScoreDB *ps)
  * @param gsl la GSlist
  * @return ptabScore* 
  */
-ptabScore *scoreDB_get(GSlist *gsl)
+static ptabScore * _scoreDB_get(GSList *gsl)
 {
   static ptabScore *p = NULL;
   /* code */
@@ -176,7 +185,7 @@ ptabScore *scoreDB_get(GSlist *gsl)
  * @param ind 
  * @return GSList* 
  */
-GSList* scoreDB_trim(GSlist *gsl, int n){
+static GSList * _scoreDB_trim(GSList *gsl, int n){
   GSlist *l = NULL ;
   /*
   code
