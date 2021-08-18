@@ -28,9 +28,9 @@ static void _scoreDB_open(); //en cours
 static int _scoreDB_close(); //en cours
 static int _scoreDB_add();
 static void _scoreDB_remove();
-static GSList * _scoreDB_trim(GSList*, int);              // limitera à LIMIT_LIST la liste score
-static ScoreDB * _scoreDB_read();                         //en cours
-static GSList * _scoreDB_sort();    
+static GSList *_scoreDB_trim(GSList *, int); // limitera à LIMIT_LIST la liste score
+static ScoreDB *_scoreDB_read();             //en cours
+static GSList *_scoreDB_sort();
 static void _scoreDB_write(ScoreDB *);                   //en cours
 static int _listScoreSort(gconstpointer, gconstpointer); //en cours
 /**
@@ -61,7 +61,7 @@ int main(int argc, char const *argv[])
   _scoreDB_write(pScore_3);
   _scoreDB_read(pScore_1, 1);
   _scoreDB_close(pScoreDB);
-  
+
   return 0;
 }
 
@@ -70,7 +70,6 @@ int main(int argc, char const *argv[])
  * 
  * @param nameFile 
  */
-
 static void _scoreDB_open(char *nameFile)
 {
   pScoreDB = fopen(nameFile, "w+");
@@ -80,6 +79,7 @@ static void _scoreDB_open(char *nameFile)
     exit(EXIT_FAILURE);
   }
 }
+
 /**
  * @brief ferme le fichier DB sur disque
  * 
@@ -131,7 +131,7 @@ static int _listScoreSort(gconstpointer sc1, gconstpointer sc2)
  * @param ind
  * @return ScoreDB*
  */
-static ScoreDB * _scoreDB_read(ScoreDB *ps, int ind)
+static ScoreDB *_scoreDB_read(ScoreDB *ps, int ind)
 {
 
   ScoreDB *scoreTemp = (ScoreDB *)malloc(sizeof(ScoreDB) * 1);
@@ -154,7 +154,7 @@ static ScoreDB * _scoreDB_read(ScoreDB *ps, int ind)
  * @param ps 
  * @return GSList* 
  */
-static GSList * _scoreDB_sort(ScoreDB *ps)
+static GSList *_scoreDB_sort(ScoreDB *ps)
 {
   listScore = g_slist_sort(listScore, _listScoreSort);
   printf("\nNombre element de la liste %d\n", g_slist_length(listScore));
@@ -166,12 +166,28 @@ static GSList * _scoreDB_sort(ScoreDB *ps)
 }
 
 /**
+ * @brief coupe la liste au n ième élement
+ * 
+ * @param gsl 
+ * @param ind 
+ * @return GSList* 
+ */
+static GSList *_scoreDB_trim(GSList *gsl, int n)
+{
+  GSlist *l = NULL;
+  /*
+  code
+  */
+  return l;
+}
+
+/**
  * @brief retourne un pointeur sur tableau contenant les pointeurs de la GSlist
  * 
  * @param gsl la GSlist
  * @return ptabScore* 
  */
-static ptabScore * _scoreDB_get(GSList *gsl)
+ptabScore *scoreDB_get(GSList *gsl)
 {
   static ptabScore *p = NULL;
   /* code */
@@ -179,16 +195,14 @@ static ptabScore * _scoreDB_get(GSList *gsl)
 }
 
 /**
- * @brief coupe la liste au n ième élement
+ * @brief attribut les datas de l'application pour être traités en liste sur struct s_ScoreDB
  * 
- * @param gsl 
- * @param ind 
- * @return GSList* 
  */
-static GSList * _scoreDB_trim(GSList *gsl, int n){
-  GSlist *l = NULL ;
+void scoreDB_set()
+{
   /*
   code
+
   */
-  return l;
+ static ScoreDB score ={.id=0, .name=NULL, .value=0};
 }

@@ -25,7 +25,7 @@ typedef struct s_ScoreDB
     int party_number;   /* nombre de partie */
 
 } ScoreDB;
-;
+
 typedef ScoreDB *ptr_ScoreDB;
 typedef ptr_ScoreDB ptabScore[LIMIT_LIST];
 
