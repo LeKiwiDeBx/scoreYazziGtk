@@ -174,7 +174,7 @@ static GSList *_scoreDB_sort(ScoreDB *ps)
  */
 static GSList *_scoreDB_trim(GSList *gsl, int n)
 {
-  GSlist *l = NULL;
+  GSList *l = NULL;
   /*
   code
   */
