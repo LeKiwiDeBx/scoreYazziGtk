@@ -198,11 +198,47 @@ ptabScore *scoreDB_get(GSList *gsl)
  * @brief attribut les datas de l'application pour être traités en liste sur struct s_ScoreDB
  * 
  */
-void scoreDB_set()
+void scoreDB_set(const char* name, int value )
 {
   /*
-  code
+  
+  typedef struct s_Player
+  {
+	int id;
+	gchar *name;				           //!\\important  un joueur 
+	sheetScoreArray *scoreArray;   Forme tab:: a une feuille de marque pour un jeu 
+	sheetScore *score;			       //!\\important Forme simple:: a une feuille de marque pour un jeu 
+	diceSet *set;				           a un jeu de dés 
+	gint canPlay;				           a son tour/ou pas de jouer 
+	statePlayer status;			       //!\\important gagnant,perdant... 
+  } Player, *ptr_Player;
+
+typedef struct s_sheet_Score{
+	int id;
+	int player_id; //!\\important
+	int scoreAces;
+	int scoreTwos;
+	int scoreThrees;
+	int scoreFours;
+	int scoreFives;
+	int scoreSixes;
+	int scoreSubSum;
+	int scoreBonus;
+	int scoreUpperSection;
+	int scoreSmallStraight;
+	int scoreLargeStraight;
+	int scoreFullHouse;
+	int scoreThreeOfKind;
+	int scoreFourOfKind;
+	int scoreYazzi;
+	int scoreChance;
+	int scoreYazziBonus;
+	int scoreLowerSection;
+	int scoreGrandTotal; //!\\important
+	} sheetScore ;
 
   */
  static ScoreDB score ={.id=0, .name=NULL, .value=0};
+ score.name = g_strdup(name);
+ score.value = value;
 }

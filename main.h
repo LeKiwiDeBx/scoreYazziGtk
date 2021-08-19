@@ -31,6 +31,6 @@ typedef ptr_ScoreDB ptabScore[LIMIT_LIST];
 
                       
 ptabScore *scoreDB_get(GSList *);                //retourne un pointeur sur tableau qui contient les LIMIT_LIST pointeurs sur les structures score
-void scoreDB_set();
+void scoreDB_set(const char*, int);
 
 #endif                                           // _MAIN_H
