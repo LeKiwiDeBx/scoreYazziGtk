@@ -190,7 +190,13 @@ static GSList *_scoreDB_trim(GSList *gsl, int n)
 ptabScore *scoreDB_get(GSList *gsl)
 {
   static ptabScore *p = NULL;
-  /* code */
+  /* code 
+  lire/créer le fichier DB
+  créer/maj de la GSList
+  tronquer la GSList à LIMIT_LIST
+  écrire la ptabScore à partir de la GSList
+  retourner la ptabScore
+  */
   return p;
 }
 

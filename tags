@@ -1,0 +1,38 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+LIMIT_LIST	main.h	16;"	d
+LIST_DATA	main.h	15;"	d
+ScoreDB	main.h	/^} ScoreDB;$/;"	t	typeref:struct:s_ScoreDB
+_MAIN_H	main.h	2;"	d
+_listScoreSort	main.c	/^static int _listScoreSort(gconstpointer sc1, gconstpointer sc2)$/;"	f	file:
+_scoreDB_close	main.c	/^static int _scoreDB_close(char *nameFile)$/;"	f	file:
+_scoreDB_open	main.c	/^static void _scoreDB_open(char *nameFile)$/;"	f	file:
+_scoreDB_read	main.c	/^static ScoreDB *_scoreDB_read(ScoreDB *ps, int ind)$/;"	f	file:
+_scoreDB_sort	main.c	/^static GSList *_scoreDB_sort(ScoreDB *ps)$/;"	f	file:
+_scoreDB_trim	main.c	/^static GSList *_scoreDB_trim(GSList *gsl, int n)$/;"	f	file:
+_scoreDB_write	main.c	/^static void _scoreDB_write(ScoreDB *ps)$/;"	f	file:
+id	main.h	/^    int id;$/;"	m	struct:s_ScoreDB
+iterator	main.h	/^GSList *listScore = NULL, *iterator = NULL;$/;"	v
+listScore	main.h	/^GSList *listScore = NULL, *iterator = NULL;$/;"	v
+main	main.c	/^int main(int argc, char const *argv[])$/;"	f
+name	main.h	/^    char *name;$/;"	m	struct:s_ScoreDB
+pScoreDB	main.h	/^FILE *pScoreDB = NULL;$/;"	v
+pScore_1	main.c	/^ScoreDB *pScore_1, *pScore_2, *pScore_3;$/;"	v
+pScore_2	main.c	/^ScoreDB *pScore_1, *pScore_2, *pScore_3;$/;"	v
+pScore_3	main.c	/^ScoreDB *pScore_1, *pScore_2, *pScore_3;$/;"	v
+party_number	main.h	/^    int party_number;   \/* nombre de partie *\/$/;"	m	struct:s_ScoreDB
+ptabScore	main.h	/^typedef ptr_ScoreDB ptabScore[LIMIT_LIST];$/;"	t
+ptr_ScoreDB	main.h	/^typedef ScoreDB *ptr_ScoreDB;$/;"	t
+s_ScoreDB	main.h	/^typedef struct s_ScoreDB$/;"	s
+scoreDB_get	main.c	/^ptabScore *scoreDB_get(GSList *gsl)$/;"	f
+scoreDB_set	main.c	/^void scoreDB_set(const char* name, int value )$/;"	f
+score_1	main.c	/^ScoreDB score_1 = {1, "jean", 200, 2, 248, 4},$/;"	v
+score_2	main.c	/^        score_2 = {2, "jacques", 290, 2, 248, 4},$/;"	v
+score_3	main.c	/^        score_3 = {3, "françois", 280, 2, 248, 4};$/;"	v
+value	main.h	/^    int value;          \/* somme des scores gagnant *\/$/;"	m	struct:s_ScoreDB
+value_avg	main.h	/^    int value_avg;      \/* moyenne des points de la victoire *\/$/;"	m	struct:s_ScoreDB
+victory_number	main.h	/^    int victory_number; \/* nombre de victoire *\/$/;"	m	struct:s_ScoreDB

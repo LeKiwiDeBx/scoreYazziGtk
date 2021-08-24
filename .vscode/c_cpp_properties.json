@@ -5,7 +5,9 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/**",
-                "/usr/lib/x86_64-linux-gnu/glib-2.0/include"
+                "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
+                "/usr/include/gtk-3.0/gtk",
+                "/usr/include/gtk-3.0/gdk"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
