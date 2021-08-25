@@ -15,6 +15,7 @@
  */
 
 #include "main.h"
+#define FILENAME "ScoreDB"
 
 ///////////////// jeu de test jeu de vilain ///////////////////////////////////
 ScoreDB *pScore_1, *pScore_2, *pScore_3;
@@ -191,8 +192,12 @@ ptabScore *scoreDB_get(GSList *gsl)
 {
   static ptabScore *p = NULL;
   /* code 
-  lire/créer le fichier DB
+  lire/créer le fichier DB*/
+  _scoreDB_open(FILENAME);
+  /*
   créer/maj de la GSList
+  _scoreDB_write(NULL);*/
+  /*
   tronquer la GSList à LIMIT_LIST
   écrire la ptabScore à partir de la GSList
   retourner la ptabScore
