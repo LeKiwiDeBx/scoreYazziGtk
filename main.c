@@ -123,6 +123,7 @@ static int _listScoreSort(gconstpointer sc1, gconstpointer sc2)
     return 1;
   else
     return 0;
+    
 }
 
 /**

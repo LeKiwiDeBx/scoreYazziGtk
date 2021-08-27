@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+FILENAME	main.c	18;"	d	file:
 LIMIT_LIST	main.h	16;"	d
 LIST_DATA	main.h	15;"	d
 ScoreDB	main.h	/^} ScoreDB;$/;"	t	typeref:struct:s_ScoreDB
